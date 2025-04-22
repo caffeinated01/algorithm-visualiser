@@ -1,0 +1,98 @@
+:root {
+  /* ------- core colour ------- */
+  --background-color: #0d1321;
+  --primary-color: #1f1f1f;
+  --text-color: #f8f8ff;
+  /* ------- bar colours ------- */
+  --bar-color: #3a5492;
+  --compare-color: #f18f01;
+  --swap-color: #00c49a;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+}
+
+#algo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+  padding: 1rem;
+}
+
+.bar {
+  background-color: var(--bar-color);
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+#algo-options {
+  position: absolute;
+  bottom: 0;
+  max-width: 600px;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+  width: 90%;
+  margin: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+#algo-menu {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--bar-color);
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  outline: none;
+  cursor: pointer;
+}
+
+.option-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--bar-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.option-btn:hover {
+  background-color: var(--text-color);
+  color: var(--bar-color);
+}
+
+.option-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.option-btn:disabled:hover {
+  background-color: #555;
+  color: var(--text-color);
+  cursor: not-allowed;
+}

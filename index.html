@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Bootleg Algoritm Visualiser</title>
+  </head>
+  <body>
+    <div id="algo-container">
+      <div class="bar">1</div>
+      <div class="bar">2</div>
+      <div class="bar">3</div>
+    </div>
+    <div id="algo-options">
+      <!-- algo menu -->
+      <select id="algo-menu">
+        <option value="bubble">Bubble Sort</option>
+        <option value="insertion">Insertion Sort</option>
+      </select>
+      <!-- shuffle button -->
+      <button id="shuffle-btn" class="option-btn">Shuffle</button>
+      <!-- speed button -->
+      <div>
+        <label for="speed-slider">Speed:</label>
+        <input type="range" id="speed-slider" min="1" max="10" value="1" />
+      </div>
+      <!-- sort button -->
+      <button id="sort-btn" class="option-btn">Sort</button>
+    </div>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
