@@ -3,7 +3,6 @@ import { generateRandomArray, renderBars, wait } from "./utils.js";
 
 let arr = [];
 export let waitTime = 0.1; // default wait time
-export const highlightWaitTime = 0.3;
 
 const shuffleBtn = document.getElementById("shuffle-btn");
 const speedSlider = document.getElementById("speed-slider");
@@ -24,7 +23,7 @@ shuffleBtn.addEventListener("click", () => {
 
 // update speed when slider is changed
 speedSlider.addEventListener("input", () => {
-  waitTime = speedSlider.value / 10;
+  waitTime = (11 - speedSlider.value) / 10;
 });
 
 // sort when sort button is clicked
