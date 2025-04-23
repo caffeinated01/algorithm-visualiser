@@ -1,4 +1,4 @@
-import { bubbleSort } from "./sort.js";
+import { bubbleSort, insertionSort } from "./sort.js";
 import { generateRandomArray, renderBars, wait } from "./utils.js";
 
 let arr = [];
@@ -29,7 +29,7 @@ speedSlider.addEventListener("input", () => {
 // sort when sort button is clicked
 sortBtn.addEventListener("click", async () => {
   shuffleBtn.disabled = true; // disable shuffle button
-  await bubbleSort(arr);
   sortBtn.disabled = true;
+  await bubbleSort(arr);
   shuffleBtn.disabled = false; // disable shuffle button
 });
