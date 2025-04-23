@@ -7,6 +7,7 @@
   --bar-color: #3a5492;
   --compare-color: #f18f01;
   --swap-color: #00c49a;
+  --sorted-color: #008367;
 }
 
 body {
@@ -27,13 +28,13 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: flex-end;
-  gap: 5px;
+  gap: 3px;
   padding: 1rem;
 }
 
 .bar {
   background-color: var(--bar-color);
-  padding: 5px;
+  padding: 0px 2px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -4,10 +4,10 @@ function generateRandomNumber(min, max) {
 }
 
 // generate an array of random numbers of given size
-function generateRandomArray(size) {
+function generateRandomArray(size, range) {
   const arr = [];
   for (let i = 0; i < size; i++) {
-    let num = generateRandomNumber(10, 100);
+    let num = generateRandomNumber(range[0], range[1]);
     arr.push(num);
   }
   return arr;
@@ -17,7 +17,7 @@ function generateRandomArray(size) {
 function renderBars(arr) {
   const container = document.getElementById("algo-container");
   container.innerHTML = ""; // clear previous boxes
-  arr.forEach((num, idx) => {
+  arr.forEach((num) => {
     const bar = document.createElement("div");
     bar.className = "bar";
     bar.style.height = `${num * 3}px`; // scale height
@@ -34,9 +34,17 @@ function highlightBars(indices, color) {
   });
 }
 
+// highlights all bars with a given color
+function highlightAll(color) {
+  const bars = document.querySelectorAll(".bar");
+  bars.forEach((bar) => {
+    bar.style.backgroundColor = color;
+  });
+}
+
 // function to wait for a given time t, in seconds
 function wait(secs) {
   return new Promise((resolve) => setTimeout(resolve, secs * 1000));
 }
 
-export { generateRandomArray, renderBars, highlightBars, wait };
+export { generateRandomArray, renderBars, highlightBars, highlightAll, wait };
