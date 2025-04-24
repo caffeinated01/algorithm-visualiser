@@ -1,4 +1,4 @@
-import { bubbleSort, insertionSort } from "./sort.js";
+import { bubbleSort, insertionSort, quickSort } from "./sort.js";
 import { generateRandomArray, renderBars } from "./utils.js";
 
 const shuffleBtn = document.getElementById("shuffle-btn");
@@ -30,7 +30,7 @@ shuffleBtn.addEventListener("click", () => {
 
 // update speed when slider is changed
 speedSlider.addEventListener("input", () => {
-  waitTime = speedSlider.value * maxSpeed; // scale wait time based on slider value
+  waitTime = (speedSlider.max - speedSlider.value + 1) * maxSpeed; // scale wait time based on slider value
 });
 
 // sort when sort button is clicked
@@ -42,6 +42,8 @@ sortBtn.addEventListener("click", async () => {
     await bubbleSort(arr);
   } else if (algoMenu.value === "insertion") {
     await insertionSort(arr);
+  } else if (algoMenu.value === "quick") {
+    await quickSort(arr);
   }
 
   shuffleBtn.disabled = false; // enable shuffle button
