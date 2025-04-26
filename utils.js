@@ -1,3 +1,5 @@
+import { checkAlgoType } from "./index.js";
+
 // generate random numbers within range the range min to max
 function generateRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -61,13 +63,18 @@ function clearPermanentHighlight() {
 function renderBars(arr) {
   const container = document.getElementById("algo-container");
   container.innerHTML = ""; // clear previous boxes
+
+  let scale = true ? checkAlgoType() === "sort" : false; // check which algorithm is selected, to determine if bars are scaled
+
   arr.forEach((num, idx) => {
     const bar = document.createElement("div");
     bar.className = "bar";
-    bar.style.height = `${num * 3}px`; // scale height
-
+    bar.style.height = scale ? `${num * 3}px` : "50px"; // scale height if needed
     if (!isMobile()) {
       bar.textContent = num;
+      bar.style.width = "20px";
+      bar.style.paddingTop = "5px";
+      bar.style.paddingBottom = "5px";
     } else {
       bar.style.padding = "4px";
     }
@@ -79,16 +86,29 @@ function renderBars(arr) {
   });
 }
 
+function displayFound() {
+  const targetDisplay = document.getElementById("target-display");
+  targetDisplay.innerText = `${targetDisplay.innerText}, found!`;
+}
+
+function displayNotFound() {
+  const targetDisplay = document.getElementById("target-display");
+  targetDisplay.innerText = `${targetDisplay.innerText}, not found!`;
+}
+
 // function to wait for a given time t, in seconds
 function wait(secs) {
   return new Promise((resolve) => setTimeout(resolve, secs * 1000));
 }
 
 export {
+  generateRandomNumber,
   generateRandomArray,
   renderBars,
   highlightBars,
   highlightAll,
+  displayFound,
+  displayNotFound,
   wait,
   addPermanentHighlight,
   clearPermanentHighlight,

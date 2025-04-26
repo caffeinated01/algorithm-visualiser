@@ -9,6 +9,7 @@
   --swap-color: #00c49a;
   --sorted-color: #008367;
   --pivot-color: #6c4ab6;
+  --found-color: #008367;
 }
 
 /* disable double tap to zoom */
@@ -18,19 +19,18 @@
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100svh;
+  min-height: 95svh;
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: Arial, sans-serif;
 }
 
 #algo-container {
-  /* left: 0%; */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -76,6 +76,11 @@ body {
   color: var(--text-color);
   outline: none;
   cursor: pointer;
+}
+
+#algo-menu:disabled {
+  background-color: #555;
+  cursor: not-allowed;
 }
 
 .option-btn {
