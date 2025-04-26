@@ -46,8 +46,6 @@ async function binarySearch(arr, target, left, right) {
   }
 
   const mid = Math.floor((left + right) / 2);
-  console.log("Checking indices:", left, mid, right);
-  console.log("Values:", arr[left], arr[mid], arr[right]);
   await visualizeComparison([mid]);
 
   if (arr[mid] === target) {

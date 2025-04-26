@@ -64,13 +64,12 @@ speedSlider.addEventListener("input", () => {
   waitTime = (speedSlider.max - speedSlider.value + 1) * maxSpeed; // scale wait time based on slider value
 });
 
-function checkSorted(arr) {
-  for (let i = 0; i < arr.length - 1; i++) {
-    if (arr[i] > arr[i + 1]) {
-      return false;
-    }
-  }
-  return true;
+function prepareSearch() {
+  let targetIdx = generateRandomNumber(0, arr.length - 1);
+  let target = arr[targetIdx];
+  targetDisplay.innerText = `Target is ${target} at index ${targetIdx}`;
+
+  return { target, targetIdx };
 }
 
 // sort when sort button is clicked
@@ -90,14 +89,13 @@ startBtn.addEventListener("click", async () => {
       }
       break;
     case "search":
-      let targetIdx = generateRandomNumber(0, arr.length - 1);
-      let target = arr[targetIdx];
-      targetDisplay.innerText = `Target is ${target} at index ${targetIdx}`;
       if (algoMenu.value === "linear") {
+        const { target, targetIdx } = prepareSearch();
         await linearSearch(arr, target);
       } else if (algoMenu.value === "binary") {
         arr = arr.sort((a, b) => a - b);
         renderBars(arr);
+        const { target, targetIdx } = prepareSearch();
         targetDisplay.innerText = `Sorted array for Binary Search; Target is ${target} at index ${targetIdx}`;
         await binarySearch(arr, target, 0, arr.length - 1);
       }
