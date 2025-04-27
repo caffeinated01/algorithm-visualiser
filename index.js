@@ -36,6 +36,7 @@ export function checkAlgoType() {
 }
 
 algoMenu.addEventListener("change", () => {
+  targetDisplay.innerText = "";
   option = algoMenu.value;
   if (checkAlgoType() === "sort") {
     startBtn.innerText = "Sort";
@@ -54,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // shuffle when shuffle button is clicked
 shuffleBtn.addEventListener("click", () => {
+  targetDisplay.innerText = "";
   arr = generateRandomArray(25, [5, 100]);
   renderBars(arr);
   startBtn.disabled = false; // enable sort button
@@ -74,6 +76,7 @@ function prepareSearch() {
 
 // sort when sort button is clicked
 startBtn.addEventListener("click", async () => {
+  targetDisplay.innerText = "";
   // disable menu elements
   shuffleBtn.disabled = true;
   startBtn.disabled = true;

@@ -9,17 +9,17 @@ import {
 } from "./utils.js";
 
 //  helper functions for visualization
-async function visualizeComparison(indices) {
+async function visualiseComparison(indices) {
   highlightBars(indices, "var(--compare-color)");
   await wait(getWaitTime());
 }
 
-async function visualizeSwap(indices) {
+async function visualiseSwap(indices) {
   highlightBars(indices, "var(--swap-color)");
   await wait(getWaitTime());
 }
 
-async function updateVisualization(arr) {
+async function updateVisualisation(arr) {
   renderBars(arr);
   await wait(getWaitTime());
 }
@@ -32,15 +32,15 @@ function swap(arr, x, y) {
 async function bubbleSort(arr) {
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
-      await visualizeComparison([j, j + 1]);
+      await visualiseComparison([j, j + 1]);
 
       if (arr[j] > arr[j + 1]) {
-        await visualizeSwap([j, j + 1]);
+        await visualiseSwap([j, j + 1]);
 
         swap(arr, j, j + 1);
       }
 
-      await updateVisualization(arr);
+      await updateVisualisation(arr);
     }
   }
   highlightAll("var(--sorted-color)");
@@ -52,19 +52,19 @@ async function insertionSort(arr) {
     let key = arr[i];
     let j = i - 1;
 
-    await visualizeComparison([i, j]);
+    await visualiseComparison([i, j]);
 
     while (j >= 0 && key < arr[j]) {
-      await visualizeSwap([i, j]);
+      await visualiseSwap([i, j]);
 
       arr[j + 1] = arr[j];
       j = j - 1;
 
-      await updateVisualization(arr);
+      await updateVisualisation(arr);
     }
 
     arr[j + 1] = key;
-    await updateVisualization(arr);
+    await updateVisualisation(arr);
   }
 
   highlightAll("var(--sorted-color)");
@@ -77,46 +77,46 @@ async function quickSort(arr, left = 0, right = arr.length - 1) {
     await quickSort(arr, left, pivotIndex - 1);
     await quickSort(arr, pivotIndex + 1, right);
   }
-  // await updateVisualization(arr);
+  // await updateVisualisation(arr);
   highlightAll("var(--sorted-color)");
 }
 
 async function partition(arr, left, right) {
   const pivot = right--;
   addPermanentHighlight(pivot, "var(--pivot-color)");
-  await updateVisualization(arr);
+  await updateVisualisation(arr);
 
   while (left <= right) {
     while (arr[left] < arr[pivot]) {
       if (left != right) {
-        await visualizeComparison([left, right]);
-        await updateVisualization(arr);
+        await visualiseComparison([left, right]);
+        await updateVisualisation(arr);
       }
 
       left++;
     }
     while (arr[right] > arr[pivot]) {
       if (left != right) {
-        await visualizeComparison([left, right]);
-        await updateVisualization(arr);
+        await visualiseComparison([left, right]);
+        await updateVisualisation(arr);
       }
 
       right--;
     }
     if (left <= right) {
-      await visualizeSwap([left, right]);
+      await visualiseSwap([left, right]);
       swap(arr, left, right);
-      await updateVisualization(arr);
+      await updateVisualisation(arr);
 
       left++;
       right--;
     }
   }
   if (pivot != left) {
-    await visualizeSwap([left, pivot]);
+    await visualiseSwap([left, pivot]);
   }
   swap(arr, left, pivot);
-  await updateVisualization(arr);
+  await updateVisualisation(arr);
   clearPermanentHighlight();
   return left;
 }
